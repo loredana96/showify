@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from 'src/config/config';
+import { IMovie, IMovieUpdates } from 'src/types/Movies.interface';
 
 @Injectable() 
 export class MovieService {
@@ -12,11 +13,20 @@ export class MovieService {
         headers = headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
         let params = new HttpParams();
         params = params.append('since', since);
-        this.httpClient.get(API_BASE_URL + "movieupdates", {
+        return this.httpClient.get<IMovieUpdates>(API_BASE_URL + "movieupdates", {
             headers,
             params
-        }).subscribe(o => {
-            console.log(o);
         })
     }
+
+    getMovie(id: string) {
+        let headers = new HttpHeaders();
+        headers = headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        let params = new HttpParams();
+        params = params.append("id", id);
+        return this.httpClient.get<IMovie>(API_BASE_URL + "movies/" + id, {
+            headers,
+            params
+        })
+    } 
 }

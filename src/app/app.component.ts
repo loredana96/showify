@@ -10,18 +10,15 @@ import { MovieService } from 'src/services/movie.service';
 })
 export class AppComponent {
 
-  title = 'movies-app';
+  title = 'Showify';
 
-  constructor(private movieService: MovieService,
-              private authService: AuthenticationService) { }
+  // request() {
+  //   this.movieService.getMovieUpdates('1264577045');
+  // }
 
-  request() {
-    this.movieService.getMovieUpdates('1264577045');
-  }
-
-  login() {
-    this.authService.getJWTToken({ apikey: API_KEY }).subscribe(o => {
-      localStorage.setItem('token', o.token);
-    })
-  }
+  // login() {
+  //   this.authService.getJWTToken({ apikey: API_KEY }).subscribe(o => {
+  //     localStorage.setItem('token', o.token);
+  //   })
+  // }
 }
