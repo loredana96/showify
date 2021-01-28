@@ -2,6 +2,10 @@ export interface IMovieUpdates {
     movies: number[];
 }
 
+export interface IMovieDataResponse {
+    data: IMovie
+}
+
 export interface IMovie {
     url: string,
     translations: ITranslation[],

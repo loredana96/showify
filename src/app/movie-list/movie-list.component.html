@@ -1,33 +1,12 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-  /* width */
-  ::-webkit-scrollbar {
-    width: 20px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: red; 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
-  }
-  </style>
-  </head>  
-<div class="movie-container">
-  <div *ngFor="let movie of movies" style="width:100%; height: 100%;">
+<div *ngFor="let genre of getGenresContainingMinimum(3)" class="row ml-1">
+  <div class="col-12 ">
+    <h1>{{genre.name}}</h1>
+  </div>
+  <div class="movie-container">
+    <div *ngFor="let movie of getMovies(genre)" style="width:100%; height: 100%;">
       <div *ngIf="movie">
         <app-movie-card [movie]="movie.data"></app-movie-card>
       </div>
     </div>
+  </div>
 </div>

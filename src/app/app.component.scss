@@ -38,6 +38,7 @@ $primary-text-color: #aaaaaa;
             a {
                 display: block;
                 height: 80px;
+                width: 80px;
                 color: $accent-color;
                 font-size: 25px;
                 text-align: center;
@@ -58,8 +59,8 @@ $primary-text-color: #aaaaaa;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 10px;
+    right: 10px;
     background-color: rgba($background-color, 1);
 }
 

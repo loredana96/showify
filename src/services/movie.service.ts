@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from 'src/config/config';
-import { IMovie, IMovieUpdates } from 'src/types/Movies.interface';
+import { IMovie, IMovieUpdates, IMovieDataResponse } from 'src/types/Movies.interface';
 
 @Injectable() 
 export class MovieService {
@@ -24,7 +24,7 @@ export class MovieService {
         headers = headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
         let params = new HttpParams();
         params = params.append("id", id);
-        return this.httpClient.get<IMovie>(API_BASE_URL + "movies/" + id, {
+        return this.httpClient.get<IMovieDataResponse>(API_BASE_URL + "movies/" + id, {
             headers,
             params
         })
