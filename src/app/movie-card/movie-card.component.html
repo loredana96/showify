@@ -1,0 +1,25 @@
+
+    <div class="example-2 card">
+      <div class="wrapper" [style.background-image]="'url(http://localhost:3000/'+image+')'">
+        <div class="header">
+          <div class="date">
+            <span class="day">{{releaseDate}}</span>
+          </div>
+          <ul class="menu-content">
+            <li>
+              <a href="#" class="fa fa-bookmark-o"></a>
+            </li>
+            <li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+            <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+          </ul>
+        </div>
+        <div class="data">
+          <div class="content">
+            <span class="author">Jane Doe</span>
+            <h1 class="title"><a href="#">{{movieTitle}}</a></h1>
+            <p class="text">{{overview}}</p>
+            <a href="#" class="button">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>

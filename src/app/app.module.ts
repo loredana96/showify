@@ -8,12 +8,14 @@ import { MovieService } from 'src/services/movie.service';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    MovieListComponent
+    MovieListComponent,
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,
