@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { API_BASE_URL } from 'src/config/config';
+import { MovieService } from 'src/services/movie.service';
 import { IMovie, ITranslation, } from 'src/types/Movies.interface';
 
 @Component({
@@ -10,11 +11,12 @@ import { IMovie, ITranslation, } from 'src/types/Movies.interface';
 
 export class MovieCardComponent implements OnInit{
 
+    constructor(private movieService: MovieService) {}
     @Input() movie: IMovie;
     public releaseDate: string;
     public movieTitle: string[];
     public overview: string[];
-    public image: string;
+    public image;
     httpClient: any;
 
     ngOnInit() {

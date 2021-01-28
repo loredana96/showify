@@ -23,7 +23,7 @@ export class MovieListComponent implements OnInit {
     }
 
     handleMovieUpdatesResponse(data: IMovieUpdates) {
-        const movies = data.movies.slice(1, 5);
+        const movies = data.movies.slice(1, 20);
         let observables: Observable<IMovie>[] = [];
         for (let movie in movies) {
             observables.push(
@@ -43,4 +43,5 @@ export class MovieListComponent implements OnInit {
     handleMovieResponse(data: IMovie[]) {
         this.movies = data;
     }
+    
 }

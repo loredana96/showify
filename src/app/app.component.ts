@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faFilm, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { API_KEY } from 'src/config/config';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { MovieService } from 'src/services/movie.service';
@@ -10,15 +11,9 @@ import { MovieService } from 'src/services/movie.service';
 })
 export class AppComponent {
 
+  faHome = faHome;
+  faFilm = faFilm;
+  faSearch = faSearch;
+  
   title = 'Showify';
-
-  // request() {
-  //   this.movieService.getMovieUpdates('1264577045');
-  // }
-
-  // login() {
-  //   this.authService.getJWTToken({ apikey: API_KEY }).subscribe(o => {
-  //     localStorage.setItem('token', o.token);
-  //   })
-  // }
 }
