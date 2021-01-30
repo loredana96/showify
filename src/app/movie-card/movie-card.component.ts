@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { API_BASE_URL } from 'src/config/config';
 import { MovieService } from 'src/services/movie.service';
 import { IMovie, ITranslation, } from 'src/types/Movies.interface';
 
@@ -11,18 +10,20 @@ import { IMovie, ITranslation, } from 'src/types/Movies.interface';
 
 export class MovieCardComponent implements OnInit{
 
-    constructor(private movieService: MovieService) {}
-    @Input() movie: IMovie;
-    public releaseDate: string;
-    public movieTitle: string[];
-    public overview: string[];
-    public image;
-    httpClient: any;
+  @Input() releaseDate: string;
+  @Input() movieTitle: string[];
+  @Input() overview: string[];
+  @Input() image: string;
+  @Input() actor: string;
+  @Input() role: string;
+  @Input() runSource: string;
 
-    ngOnInit() {
-        this.releaseDate = this.movie.release_dates[0].date.replace(/-/g, " ");
-        this.movieTitle = this.movie.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
-        this.overview = this.movie.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
-        this.image = this.movie.artworks[0].url;
-    }
+
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit() {
+    
+  }
+
+
 }

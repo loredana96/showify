@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { forkJoin, Observable, of, zip } from 'rxjs';
 import { catchError, filter, map } from 'rxjs/operators';
+import { DUMMY_SERIES } from 'src/data/dummy';
 import { MovieService } from 'src/services/movie.service';
-import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates } from 'src/types/Movies.interface';
+import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates, ISearchedMovie, ISearchedMovieDataResponse } from 'src/types/Movies.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,12 +13,24 @@ import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates } from 'src/types/Mo
 
 export class MovieListComponent implements OnInit {
 
+    constructor(private cdRef:ChangeDetectorRef, private movieService: MovieService) {}
+
     batchResponses: Observable<IMovieDataResponse[]>;
+    batchSearchResponses: Observable<ISearchedMovieDataResponse[]>;
 
     movies: IMovieDataResponse[] = [];
     genres: Set<IGenres> = new Set();
+    searchedMoviesByCategory: ISearchedMovieDataResponse;
 
-    constructor(private movieService: MovieService) {}
+    releaseDate: string[];
+    image: string;
+    author: string;
+    title: string;
+    overview: string;
+
+    typedChars: string;
+    isSearched = false;
+    word: string;
 
     ngOnInit() {
         this.movieService.getMovieUpdates('1611606780').subscribe(data => {this.handleMovieUpdatesResponse(data)});
@@ -33,7 +46,7 @@ export class MovieListComponent implements OnInit {
                 .pipe(catchError(e => of(undefined)))
             )
         }
-        this.movieService.getMovie('24').subscribe(data => console.log(data));
+        this.movieService.getMovie('24');
         this.batchResponses = forkJoin(observables);
         this.batchResponses
         .pipe(map(e => {
@@ -44,7 +57,6 @@ export class MovieListComponent implements OnInit {
 
     handleMovieResponse(data: IMovieDataResponse[]) {
         this.movies = data;
-        console.log(data);
         
         const genres = data.map(d => d.data.genres);
         const flattenGenres = [].concat(...genres) as IGenres[];
@@ -56,7 +68,56 @@ export class MovieListComponent implements OnInit {
     }
 
     getMovies(genre: IGenres) {
-        return this.movies.filter(m => m.data.genres.find(g => g.id === genre.id)).slice(0, 10);
+       return this.movies.filter(m => m.data.genres.find(g => g.id === genre.id)).slice(0, 10);
+    }
+
+    getReleaseDate(movie: IMovieDataResponse) {
+        return movie.data.release_dates[0].date.replace(/-/g, " ");
+    }
+
+    getSearchedReleaseDate(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.firstAired);
+    }
+
+    getImage(movie: IMovieDataResponse) {
+        return movie.data.artworks[0].url;
+    }
+
+    getSearchedImage(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.image);
+    }
+    
+    getRunSource(movie: IMovieDataResponse) {
+       return movie.data.remoteids.filter(data => data.source_name).filter(source => source.source_name !== "Facebook" && source.source_name !== "Instagram" && source.source_name !== "Twitter").map(d => d.source_name);
+    }
+
+    getSearchedRunSource(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.status);
+     }
+    
+    getTitle(movie: IMovieDataResponse) {
+        // return DUMMY_SERIES[0].name;
+        return movie.data.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
+    } 
+
+    getSearchedTitle(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.seriesName);
+    }
+
+    getOverview(movie: IMovieDataResponse) {
+        return movie.data.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
+    }
+
+    getSearchedOverview(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.overview);
+    }
+
+    getNetwork(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.network);
+    }
+
+    getSearchedNetwork(movie: ISearchedMovieDataResponse) {
+        return movie.data.map(movie => movie.network);
     }
 
     getGenresContainingMinimum(numberOfMovies: number) {
@@ -68,5 +129,17 @@ export class MovieListComponent implements OnInit {
         }
         return validGenres;
     }
-    
+
+    getSearchedMovies(event) {
+        this.word = event.target.value;
+        console.log (this.word)
+        this.isSearched = true
+        this.movieService.getSearchedMovie(this.word).subscribe(events => {
+        if(events) {
+          this.searchedMoviesByCategory = events;
+          console.log(this.searchedMoviesByCategory.data)
+          console.log
+          return this.searchedMoviesByCategory
+        } })      
+    }
 }

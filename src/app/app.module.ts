@@ -11,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     DashboardComponent,
     MovieListComponent,
     MovieCardComponent,
+    MovieSearchComponent
     
   ],
   imports: [
@@ -25,7 +28,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    FormsModule
   ],
   providers: [
     MovieService,

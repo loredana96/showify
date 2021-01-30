@@ -126,3 +126,33 @@ export interface IWriters {
     role: string,
     role_image: string
 }
+
+export interface ISearchedMovieDataResponse {
+    data: ISearchedMovie[]
+}
+
+export interface ISearchedMovie {
+    aliases: string
+    banner: string,
+    firstAired: string,
+    id: number,
+    image: string,
+    network: string,
+    overview: string,
+    poster: string,
+    seriesName: string,
+    slug: string,
+    status: string
+}
+
+export interface ISeriesInterface {
+    name: string;
+    translations: ITranslation[],
+    trailers: ITrailers[],
+    runtime: number,
+    remoteids: IRemoteIds[],
+    release_dates: IRelease_dates[],
+    artworks: IArtworks[],
+    genres: IGenres[],
+    image: string;
+}
