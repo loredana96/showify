@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/services/movie.service';
-import { IMovie, ITranslation, } from 'src/types/Movies.interface';
+import { IMovieDataResponse } from 'src/types/Movies.interface';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,7 +9,7 @@ import { IMovie, ITranslation, } from 'src/types/Movies.interface';
   styleUrls: [ './movie-card.component.scss' ]
 })
 
-export class MovieCardComponent implements OnInit{
+export class MovieCardComponent {
 
   @Input() releaseDate: string;
   @Input() movieTitle: string[];
@@ -17,13 +18,20 @@ export class MovieCardComponent implements OnInit{
   @Input() actor: string;
   @Input() role: string;
   @Input() runSource: string;
+  @Input() movie: IMovieDataResponse;
 
+  link;
 
-  constructor(private movieService: MovieService) {}
-
-  ngOnInit() {
-    
+  constructor(private router:Router, private movieService: MovieService) {
+    this.link = this.movieTitle;
   }
 
+  ngOnDestroy() {
+    this.movieService.movie = this.movie; 
+ }
+
+  goToDetail() {
+    this.router.navigateByUrl('Detail', { state: this.link });
+  }
 
 }

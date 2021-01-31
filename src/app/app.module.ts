@@ -13,6 +13,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { FormsModule } from '@angular/forms';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     MovieListComponent,
     MovieCardComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    MovieDetailComponent
     
   ],
   imports: [
@@ -29,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FontAwesomeModule,
     NgScrollbarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     MovieService,

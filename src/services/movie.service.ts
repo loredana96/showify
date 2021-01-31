@@ -8,6 +8,8 @@ export class MovieService {
 
     constructor(private httpClient: HttpClient) {}
 
+    movie: IMovieDataResponse;
+
     getMovieUpdates(since: string) {
         let headers = new HttpHeaders();
         headers = headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
