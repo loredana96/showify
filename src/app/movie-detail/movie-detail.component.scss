@@ -16,9 +16,14 @@
 .image {
     img {
     height: 529px;
-    width: 80%;
+    width: 100%;
     position: relative;
     z-index: 2;
     opacity: 9!important;
     }
+}
+
+.facts {
+    align-items: inline-block;
+    display: flex;
 }

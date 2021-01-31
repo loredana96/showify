@@ -1,11 +1,19 @@
 <div class="detail-container ">
     <div class="row ml-0 background-image">
         <img src ='{{"https://thetvdb.com"+image}}'>
-        <div class="col-md-6 image">
+        <div class="col-md-4 image">
             <img src ='{{"https://thetvdb.com"+image}}'>
         </div>
-        <div class="col-md-6">
-
+        <div class="col-md-8">
+            <h2 class="title-detail">
+                {{movieTitle}}
+                <span class="tag release-date">({{releaseYear}})</span>
+            </h2>
+            <div class="facts">
+                <span class="release-detail">{{releaseDate}}</span>
+                    <span class="genres-detail" *ngFor="let genre of genres" class="genres-detail">{{genre.name}}</span>
+                <span class="runtime-detail">{{hours}}h{{minutes}}m</span>
+            </div>
         </div>
     </div>
 </div>
