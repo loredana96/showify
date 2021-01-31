@@ -1,7 +1,7 @@
 <div class="detail-container ">
     <div class="row ml-0 background-image">
         <img src ='{{"https://thetvdb.com"+image}}'>
-        <div class="col-md-4 image">
+        <div class="col-md-4 ml-0 pl-0 image">
             <img src ='{{"https://thetvdb.com"+image}}'>
         </div>
         <div class="col-md-8">
@@ -10,12 +10,30 @@
                 <span class="tag release-date">({{releaseYear}})</span>
             </h2>
             <div class="facts">
-                <span class="release-detail">{{releaseDate}}</span>
-                    <span class="genres-detail" *ngFor="let genre of genres" class="genres-detail">{{genre.name}}</span>
-                <span class="runtime-detail">{{hours}}h{{minutes}}m</span>
+                <span class="release-detail mr-3">&#8226; &nbsp;{{releaseDate}}</span>
+                <button *ngFor="let genre of genres" type="button" class="btn tag-style"><span class="badge">{{genre.name}}</span></button>
+                <span class="runtime-detail mr-3 ml-3">&#8226; &nbsp;{{hours}}h{{minutes}}m</span>
+            </div>
+            <div class="actions-list ">
+                <ul class="actions ">
+                    <li><a href="#lists" title="Login to create and edit custom lists" ><fa-icon [icon]="faList"></fa-icon></a></li>
+                    <li><a href="#favourite"  title="Add this movie to your favourite lists" ><fa-icon [icon]="faHeart"></fa-icon></a></li>
+                    <li><a href="#watch" title="Add this movie to your watch lists"><fa-icon [icon]="faBookmark"></fa-icon></a></li>
+                    <li><a href="#like" title="Rate this movie"><fa-icon [icon]="faStar"></fa-icon></a></li>
+                    <button class="button"><a href="#play"><fa-icon [icon]="faPlay"></fa-icon></a></button>
+                </ul>
+            </div>
+            <div class="overview-details">
+                <h3>Overview</h3>
+                <p class="paragraph">{{overview}}</p>
+            </div>
+            <div *ngFor="let actor of actors" class="actors-details">
+                <div class="actors">
+                <h5>{{actor.name}}</h5>
+                <p>Role:&nbsp;{{actor.role}}</p>
+            </div>
             </div>
         </div>
     </div>
 </div>
-
 <app-movie-list></app-movie-list>

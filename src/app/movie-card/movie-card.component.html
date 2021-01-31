@@ -19,7 +19,7 @@
             <span class="author">{{runSource}}</span>
             <h1 class="title"><a href="#">{{movieTitle}}</a></h1>
             <p class="text">{{overview}}</p>
-            <a [routerLink]="['Detail']" [state]="link" class="button" (click)="goToDetail()">Read more</a>
+            <a [routerLink]="['/Detail', id]" [state]="link" class="button">Read more</a>
           </div>
         </div>
       </div>

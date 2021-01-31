@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from 'src/config/config';
 import { IMovie, IMovieUpdates, IMovieDataResponse, ISearchedMovieDataResponse } from 'src/types/Movies.interface';
+import { debounceTime, throttleTime } from 'rxjs/operators';
 
 @Injectable() 
 export class MovieService {
 
     constructor(private httpClient: HttpClient) {}
-
-    movie: IMovieDataResponse;
 
     getMovieUpdates(since: string) {
         let headers = new HttpHeaders();

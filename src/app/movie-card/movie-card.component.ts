@@ -19,6 +19,7 @@ export class MovieCardComponent {
   @Input() role: string;
   @Input() runSource: string;
   @Input() movie: IMovieDataResponse;
+  @Input() id: number;
 
   link;
 
@@ -26,12 +27,6 @@ export class MovieCardComponent {
     this.link = this.movieTitle;
   }
 
-  ngOnDestroy() {
-    this.movieService.movie = this.movie; 
- }
-
-  goToDetail() {
-    this.router.navigateByUrl('Detail', { state: this.link });
-  }
+  
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/services/movie.service';
-import { IGenres, IMovieDataResponse } from 'src/types/Movies.interface';
+import { IActors, IGenres, IMovieDataResponse, IPeople } from 'src/types/Movies.interface';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { faBell, faBookmark, faFilm, faHeart, faHome, faList, faPlay, faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-detail',
@@ -28,21 +29,36 @@ export class MovieDetailComponent implements OnInit {
   
 
   movieDetail: IMovieDataResponse;
+  actors: IActors[];
 
-  constructor( private router:Router, private movieService: MovieService) {
-    this.router.getCurrentNavigation().extras.state;
-    this.movieDetail = this.movieService.movie;
-    this.releaseDate = this.movieDetail.data.release_dates[0].date.replace(/-/g, " ");
-    this.releaseYear = this.releaseDate.slice(0, 5)
-    this.image = this.movieDetail.data.artworks[0].url;
-    this.genres = this.movieDetail.data.genres;
-    this.runTime = (this.movieDetail.data.runtime);
-    this.hours = Math.floor(this.runTime / 60); 
-    this.minutes = this.runTime % 60;
-    this.runSource = this.movieDetail.data.remoteids.filter(data => data.source_name).filter(source => source.source_name !== "Facebook" && source.source_name !== "Instagram" && source.source_name !== "Twitter").map(d => d.source_name);
-    this.movieTitle = this.movieDetail.data.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
-    this.overview = this.movieDetail.data.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
-  }
+  faBell = faBell;
+  faList = faList;
+  faHeart = faHeart;
+  faBookmark = faBookmark;
+  faStar = faStar;
+  faPlay = faPlay;
+
+  constructor( private router:Router, private movieService: MovieService, private activatedRoute: ActivatedRoute) {
+    // const id = this.activatedRoute.snapshot.params['id'];
+    this.activatedRoute.params.subscribe((params) => {
+        const id = params['id']
+        console.log(id + "hahaha")
+        this.movieService.getMovie(id)
+        .subscribe(m => {
+            this.releaseDate = m.data.release_dates[0].date.replace(/-/g, "/");
+            this.releaseYear = this.releaseDate.slice(0, 4)
+            this.image = m.data.artworks[0].url;
+            this.genres = m.data.genres;
+            this.runTime = (m.data.runtime);
+            this.hours = Math.floor(this.runTime / 60); 
+            this.minutes = this.runTime % 60;
+            this.actors = m.data.people.actors.slice(0,3);
+            this.runSource = m.data.remoteids.filter(data => data.source_name).filter(source => source.source_name !== "Facebook" && source.source_name !== "Instagram" && source.source_name !== "Twitter").map(d => d.source_name);
+            this.movieTitle = m.data.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
+            this.overview = m.data.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
+        });
+    });
+    }
 
   ngOnInit() {
     this.url = "https://thetvdb.com'+this.image+')"

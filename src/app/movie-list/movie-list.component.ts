@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { forkJoin, Observable, of, zip } from 'rxjs';
-import { catchError, filter, map } from 'rxjs/operators';
+import { asyncScheduler, forkJoin, interval, Observable, of, zip } from 'rxjs';
+import { catchError, debounceTime, filter, map, throttleTime } from 'rxjs/operators';
 import { DUMMY_SERIES } from 'src/data/dummy';
 import { MovieService } from 'src/services/movie.service';
 import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates, ISearchedMovie, ISearchedMovieDataResponse } from 'src/types/Movies.interface';
@@ -17,10 +17,10 @@ export class MovieListComponent implements OnInit {
 
     batchResponses: Observable<IMovieDataResponse[]>;
     batchSearchResponses: Observable<ISearchedMovieDataResponse[]>;
-
+s
     movies: IMovieDataResponse[] = [];
     genres: Set<IGenres> = new Set();
-    searchedMoviesByCategory: ISearchedMovieDataResponse;
+    searchedMoviesByCategory: ISearchedMovie[] = [];
 
     releaseDate: string[];
     image: string;
@@ -75,49 +75,25 @@ export class MovieListComponent implements OnInit {
         return movie.data.release_dates[0].date.replace(/-/g, " ");
     }
 
-    getSearchedReleaseDate(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.firstAired);
-    }
-
     getImage(movie: IMovieDataResponse) {
         return movie.data.artworks[0].url;
-    }
-
-    getSearchedImage(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.image);
     }
     
     getRunSource(movie: IMovieDataResponse) {
        return movie.data.remoteids.filter(data => data.source_name).filter(source => source.source_name !== "Facebook" && source.source_name !== "Instagram" && source.source_name !== "Twitter").map(d => d.source_name);
     }
-
-    getSearchedRunSource(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.status);
-     }
     
     getTitle(movie: IMovieDataResponse) {
         // return DUMMY_SERIES[0].name;
         return movie.data.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
     } 
-
-    getSearchedTitle(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.seriesName);
-    }
-
+    
     getOverview(movie: IMovieDataResponse) {
         return movie.data.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
     }
 
-    getSearchedOverview(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.overview);
-    }
-
-    getNetwork(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.network);
-    }
-
-    getSearchedNetwork(movie: ISearchedMovieDataResponse) {
-        return movie.data.map(movie => movie.network);
+    getNetwork(movie: ISearchedMovie) {
+        return  movie.network;
     }
 
     getGenresContainingMinimum(numberOfMovies: number) {
@@ -132,14 +108,14 @@ export class MovieListComponent implements OnInit {
 
     getSearchedMovies(event) {
         this.word = event.target.value;
-        console.log (this.word)
         this.isSearched = true
-        this.movieService.getSearchedMovie(this.word).subscribe(events => {
-        if(events) {
-          this.searchedMoviesByCategory = events;
-          console.log(this.searchedMoviesByCategory.data)
-          console.log
-          return this.searchedMoviesByCategory
-        } })      
+        this.movieService
+        .getSearchedMovie(this.word)
+        .subscribe(events => {
+            console.log (this.word)
+            if(events) {
+            this.searchedMoviesByCategory = events.data;
+            } 
+        });
     }
 }
