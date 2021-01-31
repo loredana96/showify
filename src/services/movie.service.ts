@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from 'src/config/config';
-import { IMovie, IMovieUpdates, IMovieDataResponse, ISearchedMovieDataResponse } from 'src/types/Movies.interface';
+import { IMovie, IMovieUpdates, IMovieDataResponse, ISearchedMovieDataResponse, ISerieByIdDataResponse } from 'src/types/Movies.interface';
 import { debounceTime, throttleTime } from 'rxjs/operators';
 
 @Injectable() 
@@ -41,4 +41,16 @@ export class MovieService {
             params
         })
     }
+
+    getSerieById(id: string) {
+        let headers = new HttpHeaders();
+        headers = headers.append("Authorization", "Bearer " + localStorage.getItem("token"));
+        let params = new HttpParams();
+        params = params.append("id", id);
+        return this.httpClient.get<ISerieByIdDataResponse>(API_BASE_URL + "series/" + id, {
+            headers,
+            params
+        })
+    }
+
 }

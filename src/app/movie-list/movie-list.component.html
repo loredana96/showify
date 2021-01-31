@@ -14,7 +14,8 @@
                           [releaseDate]="getReleaseDate(movie)" 
                           [isSearched]="isSearched"
                           [runSource]="getRunSource(movie)"
-                          [movie]="movie">
+                          [movie]="movie"
+                          [isSeries]="false">
           </app-movie-card>
         </div>
       </div>
@@ -24,13 +25,14 @@
 
 <ng-template #searchedResult>
   <div class="movie-container">
-    <div *ngFor="let movie of searchedMoviesByCategory" style="width:100%; height: 100%;">
+    <div *ngFor="let movie of searchedMoviesByCategory">
         <app-movie-card [id]="movie.id"
                         [overview]="movie.overview" 
                         [movieTitle]="movie.seriesname" 
                         [image]="movie.image" 
                         [releaseDate]="movie.firstAired"
                         [runSource]="movie.status"
+                        [isSeries]="true"
                         >
         </app-movie-card>
     </div>

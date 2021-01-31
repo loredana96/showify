@@ -156,3 +156,32 @@ export interface ISeriesInterface {
     genres: IGenres[],
     image: string;
 }
+
+export interface ISerieByIdDataResponse {
+    data: ISerieById;
+}
+
+export interface ISerieById {
+    added: string,
+    airsDayOfWeek: string,
+    airsTime: string,
+    aliases: string[],
+    banner: string,
+    firstAired: string,
+    genre: string[],
+    id: number,
+    imdbId: string,
+    lastUpdated: number,
+    network: string,
+    networkId: string,
+    overview: string,
+    rating: string,
+    runtime: string,
+    seriesId: string,
+    seriesName: string,
+    siteRating: 0,
+    siteRatingCount: 0,
+    slug: string,
+    status: string,
+    zap2itId: string
+}

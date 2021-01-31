@@ -1,6 +1,7 @@
 
-
 .detail-container {
+    padding-left: 80px;
+    width: 90%;
     color: #fff;
     height: 529px;
 }
@@ -10,8 +11,7 @@
 }
 
 .overview-details {
-    padding-right: 40px;
-    width: 100%;
+    text-align: justify;
 }
 
 .facts {
@@ -130,4 +130,5 @@ ul.actions li a:hover {
 .actors {
     display: inline-block;
 }
+
 

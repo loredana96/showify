@@ -19,7 +19,12 @@
             <span class="author">{{runSource}}</span>
             <h1 class="title"><a href="#">{{movieTitle}}</a></h1>
             <p class="text">{{overview}}</p>
+            <div *ngIf="!isSeries; else seriesDetail">
             <a [routerLink]="['/Detail', id]" [state]="link" class="button">Read more</a>
+          </div>
+          <ng-template #seriesDetail>
+            <a [routerLink]="['/DetailSeries', id]" [state]="link" class="button">Read more</a>
+          </ng-template>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { SerieDetailComponent } from './serie-detail/serie-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MovieListComponent,
     MovieCardComponent,
     MovieSearchComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    SerieDetailComponent
     
   ],
   imports: [

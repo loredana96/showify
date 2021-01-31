@@ -16,7 +16,7 @@
     </div>
     <div id="content-wrapper">
         <div id="content">
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
         </div>
     </div>
 </div>

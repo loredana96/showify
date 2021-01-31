@@ -13,4 +13,8 @@ export class AppComponent {
   
   
   title = 'Showify';
+
+  onActivate(event) {
+    window.scroll(0,0);
+}
 }

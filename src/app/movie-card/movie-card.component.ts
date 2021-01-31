@@ -20,6 +20,7 @@ export class MovieCardComponent {
   @Input() runSource: string;
   @Input() movie: IMovieDataResponse;
   @Input() id: number;
+  @Input() isSeries: boolean;
 
   link;
 

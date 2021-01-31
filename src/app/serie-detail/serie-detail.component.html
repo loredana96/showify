@@ -6,16 +6,15 @@
         </div>
         <div class="col-md-8">
             <h2 class="title-detail">
-                {{movieTitle}}
-                <span class="tag release-date">({{releaseYear}})</span>
+                {{seriesName}}
             </h2>
             <div class="facts">
-                <span class="release-detail mr-3">&#8226; &nbsp;{{releaseDate}}</span>
-                <button *ngFor="let genre of genres" type="button" class="btn tag-style"><span class="badge">{{genre.name}}</span></button>
-                <span class="runtime-detail mr-3 ml-3">&#8226; &nbsp;{{hours}}h{{minutes}}m</span>
+                <span class="release-detail mr-3">&#8226; &nbsp;{{runSource}}</span>
+                <button type="button" class="btn tag-style"><span class="badge">{{genre}}</span></button>
+                <span class="runtime-detail mr-3 ml-3">&#8226; &nbsp;{{runTime}}</span>
             </div>
             <div class="actions-list ">
-                <ul class="actions p-0">
+                <ul class="actions ">
                     <li><a href="#lists" title="Login to create and edit custom lists" ><fa-icon [icon]="faList"></fa-icon></a></li>
                     <li><a href="#favourite"  title="Add this movie to your favourite lists" ><fa-icon [icon]="faHeart"></fa-icon></a></li>
                     <li><a href="#watch" title="Add this movie to your watch lists"><fa-icon [icon]="faBookmark"></fa-icon></a></li>
@@ -29,11 +28,11 @@
             </div>
             <div *ngFor="let actor of actors" class="actors-details">
                 <div class="actors">
-                <h5>{{actor.name}}</h5>
-                <p class="overview-movie">Role:&nbsp;{{actor.role}}</p>
+                <h5>{{ airsDayOfTheWeek }}</h5>
+                <p class="overview-movie">Role:&nbsp;{{airsTime}}</p>
             </div>
             </div>
         </div>
     </div>
 </div>
-<app-movie-list onclick="window.scrollTo(0, 0);"></app-movie-list>
+<app-movie-list></app-movie-list>
