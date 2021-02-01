@@ -1,11 +1,8 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { asyncScheduler, forkJoin, interval, Observable, of, zip } from 'rxjs';
-import { catchError, debounceTime, filter, map, throttleTime } from 'rxjs/operators';
-import { DUMMY_SERIES } from 'src/data/dummy';
 import { MovieService } from 'src/services/movie.service';
-import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates, ISearchedMovie, ISearchedMovieDataResponse, ISerieEpisodes, ISerieEpisodesDataResponse } from 'src/types/Movies.interface';
+import { ISearchedMovie, ISerieEpisodes, ISerieEpisodesDataResponse } from 'src/types/Movies.interface';
 
 @Component({
   selector: 'app-serie-list-episodes',
@@ -13,7 +10,7 @@ import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates, ISearchedMovie, ISe
   styleUrls: [ './serie-list-episodes.component.scss' ]
 })
 
-export class SerieListEpisodesComponent  {
+export class SerieListEpisodesComponent {
 
     airedSeason: string;
     airedEpisodeNumber: string;
@@ -24,11 +21,11 @@ export class SerieListEpisodesComponent  {
     serieEpisode: ISerieEpisodesDataResponse;
     searchedMoviesByCategory: ISearchedMovie[] = [];
     filteredEpisodesBySeazon: ISerieEpisodesDataResponse;
+    episodesInSeason:ISerieEpisodes[] = [];
 
     typedChars: string;
     isSearched = false;
     word: string;
-
 
     constructor( private router:Router, private movieService: MovieService, private activatedRoute: ActivatedRoute) {
         this.activatedRoute.params.subscribe((params) => {
@@ -41,16 +38,25 @@ export class SerieListEpisodesComponent  {
         });
     }
 
+    getSeasons() {
+       let seasons = this.serieEpisode.data.map(d => d.airedSeason);
+       seasons = [...new Set(seasons)];
+       return seasons;
+    }
+
     getSearchedMovies(event) {
         this.word = event.target.value;
         this.isSearched = true
         this.movieService
         .getSearchedMovie(this.word)
         .subscribe(events => {
-            console.log (this.word)
             if(events) {
             this.searchedMoviesByCategory = events.data;
             } 
         });
+    }
+
+    getEpisodesBySeason(season: number) {
+        return this.serieEpisode.data.filter(d => d.airedSeason === season);
     }
 }

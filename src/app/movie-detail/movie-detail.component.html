@@ -1,10 +1,10 @@
 <div class="detail-container ">
     <div class="row background-image">
         <img src ='{{"https://thetvdb.com"+image}}'>
-        <div class="col-md-4 ml-0 pl-0 image">
+        <div class="col-md-4 ml-0 pl-0 pl-0 image">
             <img src ='{{"https://thetvdb.com"+image}}'>
         </div>
-        <div class="col-md-8 pl-3 info">
+        <div class="col-md-8 info">
             <h2 class="title-detail">
                 {{movieTitle}}
                 <span class="tag release-date">({{releaseYear}})</span>
@@ -29,9 +29,9 @@
             </div>
             <div *ngFor="let actor of actors" class="actors-details">
                 <div class="actors">
-                <h5>{{actor.name}}</h5>
-                <p class="overview-movie">Role:&nbsp;{{actor.role}}</p>
-            </div>
+                    <h5>{{actor.name}}</h5>
+                    <p class="overview-movie">Role:&nbsp;{{actor.role}}</p>
+                </div>
             </div>
         </div>
     </div>

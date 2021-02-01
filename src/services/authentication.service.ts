@@ -12,7 +12,5 @@ export class AuthenticationService {
     getJWTToken(body: LoginAPIKey) {
        return this.httpClient.post<LoginAPIKeyResponse>(API_BASE_URL + "login", body);
     }
-
-
 }
 

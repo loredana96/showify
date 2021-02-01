@@ -2,6 +2,7 @@ $background-color: #111111;
 $primary-color: #000;
 $secondary-color: #292929;
 $accent-color: rgb(226, 0, 0);
+
 #sidebar {
     width: 100px;
     height: 107vh;
@@ -26,6 +27,7 @@ $accent-color: rgb(226, 0, 0);
 
         li {
             list-style-type: none;
+            
             a {
                 display: block;
                 height: 80px;

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/services/movie.service';
 import { IMovieDataResponse } from 'src/types/Movies.interface';
-import { faBell, faBookmark, faFilm, faHeart, faHome, faList, faPlay, faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import {  faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-card',
@@ -23,14 +23,5 @@ export class MovieCardComponent {
   @Input() id: number;
   @Input() isSeries: boolean;
 
-  link;
-
   faHeart = faHeart;
-
-  constructor(private router:Router, private movieService: MovieService) {
-    this.link = this.movieTitle;
-  }
-
-  
-
 }

@@ -42,7 +42,6 @@ export class MovieDetailComponent implements OnInit {
     // const id = this.activatedRoute.snapshot.params['id'];
     this.activatedRoute.params.subscribe((params) => {
         const id = params['id']
-        console.log(id + "hahaha")
         this.movieService.getMovie(id)
         .subscribe(m => {
             this.releaseDate = m.data.release_dates[0].date.replace(/-/g, "/");
@@ -55,7 +54,7 @@ export class MovieDetailComponent implements OnInit {
             this.actors = m.data.people.actors.slice(0,3);
             this.runSource = m.data.remoteids.filter(data => data.source_name).filter(source => source.source_name !== "Facebook" && source.source_name !== "Instagram" && source.source_name !== "Twitter").map(d => d.source_name);
             this.movieTitle = m.data.translations.filter(language => language.language_code === "eng").map(lang => lang.name);
-            this.overview = m.data.translations.filter(overview => overview.language_code === "eng").map(description => description.overview);
+            this.overview = m.data.translations.filter(overview => overview.language_code === "eng").map(description => (description.overview.slice(0,300)));
         });
     });
     }

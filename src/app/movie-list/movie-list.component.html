@@ -24,17 +24,17 @@
 </div>
 
 <ng-template #searchedResult>
-  <div class="movie-container">
-    <div *ngFor="let movie of searchedMoviesByCategory">
-        <app-movie-card [id]="movie.id"
-                        [overview]="movie.overview" 
-                        [movieTitle]="movie.seriesname" 
-                        [image]="movie.image" 
-                        [releaseDate]="movie.firstAired"
-                        [runSource]="movie.status"
-                        [isSeries]="true"
-                        >
-        </app-movie-card>
+  <div class="serie-container row">
+    <div class="col-md-3 " *ngFor="let movie of searchedMoviesByCategory">
+      <app-movie-card [id]="movie.id"
+                      [overview]="movie.overview" 
+                      [movieTitle]="movie.seriesName" 
+                      [image]="movie.image" 
+                      [releaseDate]="movie.firstAired"
+                      [runSource]="movie.status"
+                      [isSeries]="true"
+                      >
+      </app-movie-card>
     </div>
-</div>
+  </div>
 </ng-template>

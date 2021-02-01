@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_BASE_URL } from 'src/config/config';
 import { IMovie, IMovieUpdates, IMovieDataResponse, ISearchedMovieDataResponse, ISerieByIdDataResponse, ISerieEpisodesDataResponse } from 'src/types/Movies.interface';
-import { debounceTime, throttleTime } from 'rxjs/operators';
+
 
 @Injectable() 
 export class MovieService {

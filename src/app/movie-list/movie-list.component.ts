@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { asyncScheduler, forkJoin, interval, Observable, of, zip } from 'rxjs';
 import { catchError, debounceTime, filter, map, throttleTime } from 'rxjs/operators';
-import { DUMMY_SERIES } from 'src/data/dummy';
 import { MovieService } from 'src/services/movie.service';
 import { IGenres, IMovie, IMovieDataResponse, IMovieUpdates, ISearchedMovie, ISearchedMovieDataResponse } from 'src/types/Movies.interface';
 
@@ -112,10 +111,8 @@ s
         this.movieService
         .getSearchedMovie(this.word)
         .subscribe(events => {
-            console.log (this.word)
             if(events) {
-            this.searchedMoviesByCategory = events.data;
-            } 
+            this.searchedMoviesByCategory = events.data;            } 
         });
     }
 }

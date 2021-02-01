@@ -45,17 +45,17 @@ export class SerieDetailComponent implements OnInit {
         this.movieService. getSerieById(id)
         .subscribe(m => {
           this.id = m.data.id;
-            this.airsDayOfTheWeek = m.data.airsDayOfWeek;
-            this.airsTime = m.data.airsTime;
-            this.image = m.data.fanart;
-            this.genre = m.data.genre;
-            this.runTime = m.data.runtime;
-            this.rating = m.data.rating;
-            this.seriesName = m.data.seriesName;
-            this.overview = m.data.overview;
+          this.airsDayOfTheWeek = m.data.airsDayOfWeek;
+          this.airsTime = m.data.airsTime;
+          this.image = m.data.fanart;
+          this.genre = m.data.genre;
+          this.runTime = m.data.runtime;
+          this.rating = m.data.rating;
+          this.seriesName = m.data.seriesName;
+          this.overview = m.data.overview;
         });
     });
-    }
+  }
 
   ngOnInit() {
     this.url = "https://thetvdb.com'+this.image+')"
