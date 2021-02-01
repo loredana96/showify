@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SerieDetailComponent } from './serie-detail/serie-detail.component';
 import { SerieListEpisodesComponent } from './serie-list-episodes/serie-list-episodes.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SavedComponent } from './saved/saved.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SerieListEpisodesComponent } from './serie-list-episodes/serie-list-epi
     MovieSearchComponent,
     MovieDetailComponent,
     SerieDetailComponent,
-    SerieListEpisodesComponent
+    SerieListEpisodesComponent,
+    SidebarComponent,
+    SavedComponent
     
   ],
   imports: [

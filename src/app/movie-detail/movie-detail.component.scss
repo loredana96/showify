@@ -1,9 +1,12 @@
 
 .detail-container {
-    padding-left: 80px;
-    width: 90%;
+    padding-left: 40px;
     color: #fff;
     height: 529px;
+}
+
+.info {
+    width: 90%;
 }
 
 .title-detail {
@@ -12,6 +15,7 @@
 
 .overview-details {
     text-align: justify;
+    width: 88%;
 }
 
 .facts {
@@ -25,7 +29,7 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 62%;
+        width: 60%;
         height: 520px;
         opacity: 0.1;
     }
@@ -35,7 +39,7 @@
     img {
     margin-top: 40px;
     height: 450px;
-    width: 100%;
+    width: 90%;
     position: relative;
     z-index: 2;
     opacity: 9!important;

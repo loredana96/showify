@@ -1,19 +1,7 @@
 <div id="app">
     <div id="image-dark-background-wrapper">
-
     </div>
-    <div id="sidebar">
-        <div id="logo">
-            <img src="https://seeklogo.com/images/A/a-letter-logo-BA0A595743-seeklogo.com.png" />
-        </div>
-        <ul id="menu">
-            <li><a href="#lasamainpula"><fa-icon [icon]="faHome"></fa-icon></a></li>
-            <li><a href="#lasamainpula"><fa-icon [icon]="faFilm"></fa-icon></a></li>
-            <li><a href="#lasamainpula"><fa-icon [icon]="faHome"></fa-icon></a></li>
-            <li><a href="#lasamainpula"><fa-icon [icon]="faHome"></fa-icon></a></li>
-            <li><a href="#lasamainpula"><fa-icon [icon]="faHome"></fa-icon></a></li>
-        </ul>
-    </div>
+    <app-sidebar></app-sidebar>
     <div id="content-wrapper">
         <div id="content">
             <router-outlet (activate)="onActivate($event)"></router-outlet>

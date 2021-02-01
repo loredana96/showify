@@ -11,48 +11,6 @@ $primary-text-color: #aaaaaa;
     position: relative;
     overflow: hidden;
 }
-#sidebar {
-    width: 100px;
-    height: 107vh;
-    background-color: $primary-color;
-    display: flex;
-    flex-direction: column;
-
-    #logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100px;
-
-        img {
-            width: 50%;
-        }
-    }
-
-    #menu {
-        margin: 0!important;
-        padding: 0!important;
-
-        li {
-            list-style-type: none;
-            a {
-                display: block;
-                height: 80px;
-                width: 80px;
-                color: $accent-color;
-                font-size: 25px;
-                text-align: center;
-                line-height: 80px;
-                transition: 0.2s;
-
-                &:hover {
-                    background-color: $accent-color;
-                    color: $primary-color;
-                }
-            }
-        }
-    }
-}
 
 #image-dark-background-wrapper {
     z-index: -10;

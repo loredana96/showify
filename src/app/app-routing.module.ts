@@ -5,6 +5,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SerieDetailComponent } from './serie-detail/serie-detail.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { SerieListEpisodesComponent } from './serie-list-episodes/serie-list-episodes.component';
+import { SavedComponent } from './saved/saved.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'Detail/:id', component: MovieDetailComponent },
   { path: 'series/:id', component: SerieDetailComponent },
   { path: 'series/:id/episodes', component: SerieListEpisodesComponent },
+  { path: 'SavedForLater', component: SavedComponent },
 ];
 
 @NgModule({
