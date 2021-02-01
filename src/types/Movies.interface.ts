@@ -54,11 +54,11 @@ export interface IArtworks {
     tags: string,
     thumb_url: string,
     url: string,
-    width: 0
+    width: number
 }
 
 export interface IGenres {
-    id: 0,
+    id: number,
     name: string,
     url: string
 }
@@ -179,9 +179,48 @@ export interface ISerieById {
     runtime: string,
     seriesId: string,
     seriesName: string,
-    siteRating: 0,
-    siteRatingCount: 0,
+    siteRating: number,
+    siteRatingCount: number,
     slug: string,
     status: string,
-    zap2itId: string
+    zap2itId: string,
+    fanart: string
+}
+
+export interface ISerieEpisodesDataResponse {
+    data: ISerieEpisodes[];
+}
+
+export interface ISerieEpisodes {
+    absoluteNumber: number,
+      airedEpisodeNumber: number,
+      airedSeason: number,
+      airsAfterSeason: number,
+      airsBeforeEpisode: number,
+      airsBeforeSeason: number,
+      director: string,
+      directors: string,
+      dvdChapter: number,
+      dvdDiscid: string,
+      dvdEpisodeNumber: number,
+      dvdSeason: number,
+      episodeName: string,
+      filename: string,
+      firstAired: string,
+      guestStars: string,
+      id: number,
+      imdbId: string,
+      lastUpdated: number,
+      lastUpdatedBy: string,
+      overview: string,
+      productionCode: string,
+      seriesId: string,
+      showUrl: string,
+      siteRating: number,
+      siteRatingCount: number,
+      thumbAdded: string,
+      thumbAuthor: number,
+      thumbHeight: string,
+      thumbWidth: string,
+      writers: string
 }

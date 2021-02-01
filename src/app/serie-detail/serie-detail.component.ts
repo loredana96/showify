@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from 'src/services/movie.service';
-import { IActors, IGenres, IMovieDataResponse, IPeople } from 'src/types/Movies.interface';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { IActors, IMovieDataResponse } from 'src/types/Movies.interface';
 import { faBell, faBookmark, faFilm, faHeart, faHome, faList, faPlay, faSearch, faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -26,8 +25,10 @@ export class SerieDetailComponent implements OnInit {
   runTime: string;
   hours: number; 
   minutes: number;
+  id: number;
   
-
+  link;
+  
   movieDetail: IMovieDataResponse;
   actors: IActors[];
 
@@ -43,13 +44,12 @@ export class SerieDetailComponent implements OnInit {
         const id = params['id']
         this.movieService. getSerieById(id)
         .subscribe(m => {
-            this.airsDayOfTheWeek = m.data.airsDayOfWeek
+          this.id = m.data.id;
+            this.airsDayOfTheWeek = m.data.airsDayOfWeek;
             this.airsTime = m.data.airsTime;
-            this.image = m.data.banner;
+            this.image = m.data.fanart;
             this.genre = m.data.genre;
             this.runTime = m.data.runtime;
-            // this.hours = Math.floor(this.runTime / 60); 
-            // this.minutes = this.runTime % 60;
             this.rating = m.data.rating;
             this.seriesName = m.data.seriesName;
             this.overview = m.data.overview;

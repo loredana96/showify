@@ -15,6 +15,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SerieDetailComponent } from './serie-detail/serie-detail.component';
+import { SerieListEpisodesComponent } from './serie-list-episodes/serie-list-episodes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SerieDetailComponent } from './serie-detail/serie-detail.component';
     MovieCardComponent,
     MovieSearchComponent,
     MovieDetailComponent,
-    SerieDetailComponent
+    SerieDetailComponent,
+    SerieListEpisodesComponent
     
   ],
   imports: [

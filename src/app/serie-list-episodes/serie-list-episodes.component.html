@@ -1,0 +1,21 @@
+<app-movie-search (searchEvent)="getSearchedMovies($event)"></app-movie-search>
+<app-serie-detail></app-serie-detail>
+  <div *ngFor="let episode of serieEpisode.data" class="row ml-1">
+    <div class="col-12 ">
+      <h1>Season {{episode.airedSeason}}</h1>
+    </div>
+    <div class="movie-container">
+        <div *ngIf="episode">
+          <app-movie-card [id]="episode.id"
+                          [overview]="episode.overview" 
+                          [movieTitle]="episode.episodeName" 
+                          [image]="'/banners/'+episode.filename" 
+                          [releaseDate]="episode.firstAired" 
+                          [isSearched]="isSearched"
+                          [runSource]="episode.airedEpisodeNumber"
+                          [movie]="movie"
+                          [isSeries]="false">
+          </app-movie-card>
+        </div>
+    </div>
+  </div>

@@ -1,17 +1,17 @@
 <div class="detail-container ">
     <div class="row ml-0 background-image">
-        <img src ='{{"https://thetvdb.com"+image}}'>
+        <img src ='{{"https://thetvdb.com/banners/"+image}}'>
         <div class="col-md-4 ml-0 pl-0 image">
-            <img src ='{{"https://thetvdb.com"+image}}'>
+            <img src ='{{"https://thetvdb.com/banners/"+image}}'>
         </div>
         <div class="col-md-8">
             <h2 class="title-detail">
                 {{seriesName}}
             </h2>
             <div class="facts">
-                <span class="release-detail mr-3">&#8226; &nbsp;{{runSource}}</span>
+                <span class="release-detail mr-3">&#8226; &nbsp;{{rating}}</span>
                 <button type="button" class="btn tag-style"><span class="badge">{{genre}}</span></button>
-                <span class="runtime-detail mr-3 ml-3">&#8226; &nbsp;{{runTime}}</span>
+                <span class="runtime-detail mr-3 ml-3">&#8226; &nbsp;{{runTime}}mins</span>
             </div>
             <div class="actions-list ">
                 <ul class="actions ">
@@ -26,13 +26,12 @@
                 <h3>Overview</h3>
                 <p class="pr-4">{{overview}}</p>
             </div>
-            <div *ngFor="let actor of actors" class="actors-details">
+            <div  class="actors-details">
                 <div class="actors">
-                <h5>{{ airsDayOfTheWeek }}</h5>
-                <p class="overview-movie">Role:&nbsp;{{airsTime}}</p>
-            </div>
+                    <h5>{{ airsDayOfTheWeek }}</h5>
+                    <p class="overview-movie">{{airsTime}}</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<app-movie-list></app-movie-list>

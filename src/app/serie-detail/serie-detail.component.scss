@@ -1,0 +1,132 @@
+
+.detail-container {
+    padding-left: 80px;
+    width: 90%;
+    color: #fff;
+    height: 529px;
+}
+
+.title-detail {
+    margin-top: 40px;
+}
+
+.overview-details {
+    text-align: justify;
+}
+
+.facts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.background-image {
+    img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 62%;
+        height: 520px;
+        opacity: 0.1;
+    }
+}
+
+.image {
+    img {
+    margin-top: 40px;
+    height: 450px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    opacity: 9!important;
+    box-shadow: 0 19px 38px rgba(black, 0.3), 0 15px 12px rgba(black, 0.2);
+    border-radius: 25px;
+    align-items: center;
+    }
+}
+
+.facts {
+    align-items: inline-block;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul.actions {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+ul.actions li {
+    margin-right: 30px;
+}
+
+ul.actions li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    background: black;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    color: rgb(226, 0, 0);
+}
+
+ul.actions li a:hover {
+    color: #fff;
+}
+
+.button {
+    background: black;
+    border-radius: 20%;
+    height: 30px;
+    width: 90px;
+    a {
+        color: rgb(226, 0, 0);
+    }
+    a:hover {
+        color: #fff;
+    }
+}
+
+.noticication a {
+    width: 40px;
+    height: 40px;
+}
+
+.tag-style {
+    background: rgb(226, 0, 0);
+    height: 30px;
+    // margin-right: 10xp;
+}
+
+.btn .badge {
+    position: relative;
+    top: -9px;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    margin-right: 10px;
+}
+
+.actors-details {
+    padding-right: 40px;
+    float: left;
+    margin-top: 20px;
+}
+
+.actors {
+    display: inline-block;
+}
